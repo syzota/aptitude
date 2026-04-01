@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tes Minat Karier – UPA BK UNMUL</title>
+  <link rel="icon" type="image/png" href="assets/LogoUnmul.png">
+
+  <!-- Google Fonts -->
+  <link
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav>
+    <div class="nav-logo" onclick="goHome()" style="cursor:pointer;">
+      <div class="logo-badge">UPA BK</div>
+      <div class="nav-title">
+        Tes Minat Karier
+        <small>Universitas Mulawarman</small>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       SCREEN: LANDING
+       ============================================================ -->
+  <div id="screen-landing" class="screen active">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-tag">Holland RIASEC · Teori Minat Karier</div>
+        <h1>Temukan <span>Karier</span> yang Tepat Untukmu</h1>
+        <p>
+          Tes minat karier berbasis teori Holland membantu kamu memahami
+          kecenderungan kepribadian dan menemukan jurusan atau pekerjaan
+          yang paling sesuai.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="startTest()">Mulai Tes Sekarang</button>
+          <button class="btn-secondary" onclick="scrollToTypes()">Pelajari Tipe Kepribadian</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIASEC Type Cards -->
+    <div class="types-section" id="types-section">
+      <h2>6 Tipe Kepribadian Holland</h2>
+      <p>
+        Setiap orang memiliki kombinasi unik dari enam tipe ini.
+        Kode Hollandmu adalah tiga tipe dengan skor tertinggi.
+      </p>
+      <div class="types-grid">
+        <div class="type-card R">
+          <div class="type-letter">R</div>
+          <div class="type-name">Realistic</div>
+          <div class="type-desc">
+            Suka bekerja dengan alat, mesin, dan aktivitas fisik.
+            Praktis dan berorientasi teknis.
+          </div>
+        </div>
+        <div class="type-card I">
+          <div class="type-letter">I</div>
+          <div class="type-name">Investigative</div>
+          <div class="type-desc">
+            Suka mengamati, meneliti, dan memecahkan masalah ilmiah.
+            Analitis dan ingin tahu.
+          </div>
+        </div>
+        <div class="type-card A">
+          <div class="type-letter">A</div>
+          <div class="type-name">Artistic</div>
+          <div class="type-desc">
+            Suka berkreasi dan mengekspresikan diri.
+            Imajinatif dan berorientasi pada ide orisinal.
+          </div>
+        </div>
+        <div class="type-card S">
+          <div class="type-letter">S</div>
+          <div class="type-name">Social</div>
+          <div class="type-desc">
+            Suka membantu, mendidik, dan bekerja dengan orang.
+            Empatik dan berorientasi sosial.
+          </div>
+        </div>
+        <div class="type-card E">
+          <div class="type-letter">E</div>
+          <div class="type-name">Enterprising</div>
+          <div class="type-desc">
+            Suka memimpin, menjual, dan mempengaruhi.
+            Ambisius dan berorientasi pada tujuan.
+          </div>
+        </div>
+        <div class="type-card C">
+          <div class="type-letter">C</div>
+          <div class="type-name">Conventional</div>
+          <div class="type-desc">
+            Suka keteraturan, data, dan prosedur yang jelas.
+            Teliti dan berorientasi detail.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Siap Mengenal Dirimu Lebih Dalam?</h2>
+      <p>
+        Tes ini terdiri dari 60 pernyataan dan membutuhkan sekitar
+        10–15 menit untuk diselesaikan.
+      </p>
+      <button class="btn-primary" onclick="startTest()">Mulai Tes →</button>
+    </div>
+
+    < >
+      © 2025 UPA Bimbingan Konseling – Universitas Mulawarman.
+      Semua hak dilindungi.
+    </footer>
+  </div>
+
+
+  <!-- ============================================================
+       SCREEN: TEST
+       ============================================================ -->
+  <div id="screen-test" class="screen">
+    <div class="test-container">
+
+      <!-- Header & Progress -->
+      <div class="test-header">
+        <div class="progress-info">
+          <span class="progress-label" id="section-label">Bagian A – Aktivitas Teknis</span>
+          <span class="progress-current" id="progress-text">1 / 6</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 16.6%"></div>
+        </div>
+        <div style="margin-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+          <div class="section-progress" id="section-dots"></div>
+          <span style="font-size: 12px; color: var(--muted);" id="answered-count"></span>
+        </div>
+      </div>
+
+      <!-- Dynamic section tag & questions (injected by JS) -->
+      <div id="section-tag-container"></div>
+      <div id="questions-container"></div>
+
+      <!-- Navigation -->
+      <div class="test-nav">
+        <button class="btn-nav btn-back" id="btn-back" onclick="prevSection()">← Kembali</button>
+        <button class="btn-nav btn-next" id="btn-next" onclick="nextSection()">Lanjut →</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SCREEN: RESULT
+       ============================================================ -->
+  <div id="screen-result" class="screen">
+    <div class="result-container">
+
+      <!-- Result hero banner -->
+      <div class="result-hero">
+        <div class="result-hero-content">
+          <div class="result-code-label">Kode Holland Kamu</div>
+          <div class="result-code" id="result-code">---</div>
+          <div class="result-title" id="result-title">–</div>
+          <div class="result-sub">Berdasarkan 60 pernyataan minat karier</div>
+        </div>
+      </div>
+
+      <!-- Score cards (injected by JS) -->
+      <div class="score-grid" id="score-grid"></div>
+
+      <!-- Personality description cards (injected by JS) -->
+      <div class="result-desc-cards" id="result-desc-cards"></div>
+
+      <!-- Actions -->
+      <div class="result-actions">
+        <button class="btn-print"   onclick="window.print()">Cetak Hasil</button>
+        <button class="btn-primary" onclick="scrollToTypes()">Beranda</button>
+      </div>
+
+    </div>
+
+    <footer>
+      © 2025 UPA Bimbingan Konseling – Universitas Mulawarman. Project by Hi-5.
+      All rights reserved.
+    </footer>
+  </div>
+
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
