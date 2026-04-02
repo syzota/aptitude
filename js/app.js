@@ -1,16 +1,21 @@
 /* ============================================================
    app.js — Tes Minat Karier UPA BK UNMUL
+   ============================================================
+   Struktur:
+     1. DATA      — SECTIONS & COMBO_NAMES
+     2. STATE     — variabel aktif
+     3. UI        — fungsi render & display
+     4. LOGIC     — event handlers & kalkulasi
    ============================================================ */
 
+
 /* ================================================================
-   1. DATA 
+   1. DATA
    ================================================================ */
+
 const SECTIONS = [
   {
-    key: 'R',
-    name: 'Realistic',
-    label: 'Bagian A',
-    color: '#e8534c',
+    key: 'R', name: 'Realistic', label: 'Bagian A', color: '#e8534c',
     questions: [
       'Memperbaiki mesin atau peralatan elektronik',
       'Merakit model atau membuat kerajinan tangan',
@@ -27,10 +32,7 @@ const SECTIONS = [
     careers: ['Teknik Sipil', 'Teknik Mesin', 'Pertanian', 'Arsitektur', 'Elektronika', 'Pilot / Transportasi'],
   },
   {
-    key: 'I',
-    name: 'Investigative',
-    label: 'Bagian B',
-    color: '#4c8eb5',
+    key: 'I', name: 'Investigative', label: 'Bagian B', color: '#4c8eb5',
     questions: [
       'Melakukan eksperimen di laboratorium',
       'Mempelajari teori ilmiah (fisika, biologi, kimia)',
@@ -47,10 +49,7 @@ const SECTIONS = [
     careers: ['Kedokteran', 'Biologi / Kimia', 'Data Science', 'Psikologi Riset', 'Fisika', 'Farmasi'],
   },
   {
-    key: 'A',
-    name: 'Artistic',
-    label: 'Bagian C',
-    color: '#c26db5',
+    key: 'A', name: 'Artistic', label: 'Bagian C', color: '#c26db5',
     questions: [
       'Melukis, menggambar, atau membuat ilustrasi',
       'Menulis cerita, puisi, atau artikel kreatif',
@@ -67,10 +66,7 @@ const SECTIONS = [
     careers: ['Desain Grafis', 'Seni Rupa', 'Komunikasi Visual', 'Arsitektur', 'Jurnalistik', 'Musik / Film'],
   },
   {
-    key: 'S',
-    name: 'Social',
-    label: 'Bagian D',
-    color: '#4cad7a',
+    key: 'S', name: 'Social', label: 'Bagian D', color: '#4cad7a',
     questions: [
       'Mengajar atau melatih orang lain',
       'Memberikan konseling atau nasihat',
@@ -87,10 +83,7 @@ const SECTIONS = [
     careers: ['Bimbingan Konseling', 'Pendidikan / Guru', 'Psikologi Klinis', 'Keperawatan', 'Pekerjaan Sosial', 'HR / SDM'],
   },
   {
-    key: 'E',
-    name: 'Enterprising',
-    label: 'Bagian E',
-    color: '#e8a84c',
+    key: 'E', name: 'Enterprising', label: 'Bagian E', color: '#e8a84c',
     questions: [
       'Memimpin rapat atau proyek kelompok',
       'Menjual produk atau mempromosikan jasa',
@@ -107,10 +100,7 @@ const SECTIONS = [
     careers: ['Manajemen Bisnis', 'Marketing / Pemasaran', 'Hukum', 'Wirausaha', 'Politik / Pemerintahan', 'Public Relations'],
   },
   {
-    key: 'C',
-    name: 'Conventional',
-    label: 'Bagian F',
-    color: '#7a6bb5',
+    key: 'C', name: 'Conventional', label: 'Bagian F', color: '#7a6bb5',
     questions: [
       'Mengatur dan menyimpan dokumen dengan rapi',
       'Memeriksa data untuk memastikan keakuratan',
@@ -129,44 +119,36 @@ const SECTIONS = [
 ];
 
 const COMBO_NAMES = {
-  RIA: 'Pemikir Praktis-Ilmiah-Kreatif', 
-  RIS: 'Teknisi Ilmiah Berempati', 
-  RIE: 'Inovator Teknis Enterprising',
-  RIC: 'Analis Teknis Terstruktur', 
-  IAS: 'Ilmuwan Kreatif-Sosial', 
-  IAE: 'Pemimpin Ilmiah Inovatif',
-  IAC: 'Analis Kreatif Metodis', 
-  ISE: 'Konselor Ilmiah Enterprising', 
-  ISC: 'Profesional Ilmiah Terstruktur',
-  IEC: 'Wirausahawan Analitis', 
-  AES: 'Pemimpin Kreatif Sosial', 
-  ASE: 'Fasilitator Kreatif',
-  ASC: 'Seniman Sosial Terorganisir', 
-  AEC: 'Desainer Bisnis', 
-  SEC: 'Manajer Pelayanan',
-  SAE: 'Pemimpin Humanis', 
-  SAC: 'Konselor Terstruktur', 
-  SIA: 'Peneliti Sosial Kreatif',
-  ESC: 'Manajer Operasional', 
-  EIA: 'Pemimpin Visioner Ilmiah',
-  EIS: 'Konsultan Ilmiah',
-  CSI: 'Profesional Terstruktur', 
-  CES: 'Administrator Berjiwa Sosial', 
-  CEI: 'Analis Bisnis',
+  RIA: 'Pemikir Praktis-Ilmiah-Kreatif',  RIS: 'Teknisi Ilmiah Berempati',
+  RIE: 'Inovator Teknis Enterprising',     RIC: 'Analis Teknis Terstruktur',
+  IAS: 'Ilmuwan Kreatif-Sosial',           IAE: 'Pemimpin Ilmiah Inovatif',
+  IAC: 'Analis Kreatif Metodis',           ISE: 'Konselor Ilmiah Enterprising',
+  ISC: 'Profesional Ilmiah Terstruktur',   IEC: 'Wirausahawan Analitis',
+  AES: 'Pemimpin Kreatif Sosial',          ASE: 'Fasilitator Kreatif',
+  ASC: 'Seniman Sosial Terorganisir',      AEC: 'Desainer Bisnis',
+  SEC: 'Manajer Pelayanan',                SAE: 'Pemimpin Humanis',
+  SAC: 'Konselor Terstruktur',             SIA: 'Peneliti Sosial Kreatif',
+  ESC: 'Manajer Operasional',              EIA: 'Pemimpin Visioner Ilmiah',
+  EIS: 'Konsultan Ilmiah',                 CSI: 'Profesional Terstruktur',
+  CES: 'Administrator Berjiwa Sosial',     CEI: 'Analis Bisnis',
 };
+
 
 /* ================================================================
    2. STATE
    ================================================================ */
-   
-let allQuestions = []; 
-let answers = {};      
+
+let userData = { nama: '', prodi: '', angkatan: '', telp: '' };
+let allQuestions = [];
+let answers = {};
 let currentSection = 0;
 const QUESTIONS_PER_PAGE = 10;
+
 
 /* ================================================================
    3. UI — render helpers
    ================================================================ */
+
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -199,14 +181,13 @@ function renderProgress() {
 
 function renderQuestions() {
   const start = currentSection * QUESTIONS_PER_PAGE;
-  const end = start + QUESTIONS_PER_PAGE;
-  const pageQuestions = allQuestions.slice(start, end);
+  const pageQuestions = allQuestions.slice(start, start + QUESTIONS_PER_PAGE);
 
   const html = pageQuestions.map((q, idx) => {
     const globalIdx = start + idx;
     const val = (answers[q.type] && answers[q.type][q.originalIndex]) || 0;
-    const btns = [1, 2, 3, 4, 5].map(v => 
-      `<button class="rating-btn ${val === v ? 'selected' : ''}" 
+    const btns = [1, 2, 3, 4, 5].map(v =>
+      `<button class="rating-btn ${val === v ? 'selected' : ''}"
                onclick="setAnswer('${q.type}', ${q.originalIndex}, ${v}, this)">${v}</button>`
     ).join('');
 
@@ -221,6 +202,7 @@ function renderQuestions() {
         </div>
       </div>`;
   }).join('');
+
   document.getElementById('questions-container').innerHTML = html;
 }
 
@@ -228,10 +210,10 @@ function updateAnsweredCount() {
   let totalDone = 0;
   Object.values(answers).forEach(typeObj => { totalDone += Object.keys(typeObj).length; });
   document.getElementById('answered-count').textContent = `${totalDone} / ${allQuestions.length} dijawab`;
-  
+
   const start = currentSection * QUESTIONS_PER_PAGE;
   const pageQuestions = allQuestions.slice(start, start + QUESTIONS_PER_PAGE);
-  const isPageComplete = pageQuestions.every(q => answers[q.type] && answers[q.type][q.originalIndex]);
+  const isPageComplete = pageQuestions.every(q => answers[q.type] && answers[q.type][q.originalIndex] !== undefined);
   document.getElementById('btn-next').disabled = !isPageComplete;
 }
 
@@ -240,38 +222,79 @@ function renderSection() {
   renderProgress();
   renderQuestions();
   updateAnsweredCount();
+
   document.getElementById('btn-back').style.visibility = currentSection === 0 ? 'hidden' : 'visible';
   const totalPages = Math.ceil(allQuestions.length / QUESTIONS_PER_PAGE);
   document.getElementById('btn-next').textContent = currentSection === totalPages - 1 ? 'Lihat Hasil →' : 'Lanjut →';
 }
 
 function renderResult(scores, sorted, top3, code, comboName) {
+  // --- User info header (untuk print) ---
+  const userInfoContainer = document.getElementById('user-info-display');
+  if (userInfoContainer) {
+    userInfoContainer.innerHTML = `
+      <div class="print-header" style="text-align:left; border-bottom:2px solid #333; padding-bottom:10px; margin-bottom:20px;">
+        <h2 style="margin-bottom:10px;">Laporan Hasil Tes Minat Karier</h2>
+        <table style="width:100%; border-collapse:collapse; font-size:14px;">
+          <tr>
+            <td style="width:130px; padding:4px 0;"><strong>Nama Lengkap</strong></td>
+            <td style="padding:4px 0;">: ${userData.nama}</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:4px 0;">: ${userData.prodi}</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 0;"><strong>Angkatan / NIM</strong></td>
+            <td style="padding:4px 0;">: ${userData.angkatan}</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 0;"><strong>Nomor Telepon</strong></td>
+            <td style="padding:4px 0;">: ${userData.telp}</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 0;"><strong>Tanggal Tes</strong></td>
+            <td style="padding:4px 0;">: ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</td>
+          </tr>
+        </table>
+      </div>`;
+  }
+
   document.getElementById('result-code').textContent = code;
   document.getElementById('result-title').textContent = comboName;
+
+  // --- Score grid ---
   const gridHTML = sorted.map(([key, score]) => {
     const sec = SECTIONS.find(s => s.key === key);
     return `
       <div class="score-card" data-type="${key}">
         <div class="score-letter">${key}</div>
         <div class="score-name">${sec.name}</div>
-        <div class="score-bar-wrap"><div class="score-bar" style="width:0%" id="bar-${key}"></div></div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:0%" id="bar-${key}"></div>
+        </div>
         <span class="score-value">${score}</span><span class="score-max"> / 50</span>
       </div>`;
   }).join('');
   document.getElementById('score-grid').innerHTML = gridHTML;
 
+  // --- Description cards (top 3) ---
   const descHTML = top3.map(key => {
     const sec = SECTIONS.find(s => s.key === key);
     const careers = sec.careers.map(c => `<span class="career-tag">${c}</span>`).join('');
     return `
       <div class="result-desc-card">
-        <h3>${key} – ${sec.name}</h3>
+        <h3>Tipe ${key} – ${sec.name}</h3>
         <p>${sec.desc}</p>
-        <div class="career-tags">${careers}</div>
+        <div class="career-tags">
+          <strong>Saran Karier:</strong><br>
+          ${careers}
+        </div>
       </div>`;
   }).join('');
   document.getElementById('result-desc-cards').innerHTML = descHTML;
 
+  // Animate score bars after paint
   setTimeout(() => {
     sorted.forEach(([key, score]) => {
       const bar = document.getElementById(`bar-${key}`);
@@ -280,9 +303,30 @@ function renderResult(scores, sorted, top3, code, comboName) {
   }, 150);
 }
 
+
 /* ================================================================
-   4. LOGIC
+   4. LOGIC — event handlers & kalkulasi
    ================================================================ */
+
+function goToForm() {
+  showScreen('screen-form');
+}
+
+function validateForm() {
+  const nama     = document.getElementById('user-nama').value.trim();
+  const prodi    = document.getElementById('user-prodi').value.trim();
+  const angkatan = document.getElementById('user-angkatan').value.trim();
+  const telp     = document.getElementById('user-telp').value.trim();
+
+  if (!nama || !prodi || !angkatan || !telp) {
+    alert('Mohon lengkapi semua data diri sebelum memulai.');
+    return;
+  }
+
+  userData = { nama, prodi, angkatan, telp };
+  startTest();
+}
+
 function calcScores() {
   const scores = {};
   SECTIONS.forEach(sec => {
@@ -308,11 +352,13 @@ function startTest() {
       allQuestions.push({ text: qText, type: sec.key, originalIndex: i });
     });
   });
-  // Shuffle questions
+
+  // Acak urutan soal (Fisher-Yates shuffle)
   for (let i = allQuestions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
   }
+
   currentSection = 0;
   answers = {};
   renderSection();
@@ -339,18 +385,21 @@ function prevSection() {
 }
 
 function showResult() {
-  const scores = calcScores();
-  const sorted = Object.entries(scores).sort(([, a], [, b]) => b - a);
-  const top3 = sorted.slice(0, 3).map(([k]) => k);
-  const code = top3.join('');
+  const scores    = calcScores();
+  const sorted    = Object.entries(scores).sort(([, a], [, b]) => b - a);
+  const top3      = sorted.slice(0, 3).map(([k]) => k);
+  const code      = top3.join('');
   const comboName = COMBO_NAMES[code] || COMBO_NAMES[top3.slice().sort().join('')] || 'Profil Unik';
+
   renderResult(scores, sorted, top3, code, comboName);
   showScreen('screen-result');
 }
 
-function scrollToTypes() { document.getElementById('types-section').scrollIntoView({ behavior: 'smooth' }); }
-function restartTest() { answers = {}; currentSection = 0; showScreen('screen-landing'); }
-function goHome() { 
-  document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
+function scrollToTypes() {
+  document.getElementById('types-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function goHome() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-landing').classList.add('active');
 }
