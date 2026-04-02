@@ -4,20 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tes Minat Karier – UPA BK UNMUL</title>
-  <link rel="icon" type="image/png" href="assets/LogoUnmul.png">
-
-  <!-- Google Fonts -->
-  <link
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
+  <link rel="icon" type="image/png" href="assets/LogoUnmul.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ============================================================
-       NAV
-       ============================================================ -->
   <nav>
     <div class="nav-logo" onclick="goHome()" style="cursor:pointer;">
       <div class="logo-badge">UPA BK</div>
@@ -28,111 +20,139 @@
     </div>
   </nav>
 
-  <!-- ============================================================
-       SCREEN: LANDING
-       ============================================================ -->
+  <!-- LANDING -->
   <div id="screen-landing" class="screen active">
-
-    <!-- Hero -->
     <div class="hero">
       <div class="hero-content">
         <div class="hero-tag">Holland RIASEC · Teori Minat Karier</div>
         <h1>Temukan <span>Karier</span> yang Tepat Untukmu</h1>
-        <p>
-          Tes minat karier berbasis teori Holland membantu kamu memahami
-          kecenderungan kepribadian dan menemukan jurusan atau pekerjaan
-          yang paling sesuai.
-        </p>
+        <p>Tes minat karier berbasis teori Holland membantu kamu memahami kecenderungan kepribadian dan menemukan jurusan atau pekerjaan yang paling sesuai.</p>
         <div class="hero-btns">
-          <button class="btn-primary" onclick="startTest()">Mulai Tes Sekarang</button>
+          <button class="btn-primary" onclick="goToForm()">Mulai Tes Sekarang</button>
           <button class="btn-secondary" onclick="scrollToTypes()">Pelajari Tipe Kepribadian</button>
         </div>
       </div>
     </div>
-
-    <!-- RIASEC Type Cards -->
     <div class="types-section" id="types-section">
       <h2>6 Tipe Kepribadian Holland</h2>
-      <p>
-        Setiap orang memiliki kombinasi unik dari enam tipe ini.
-        Kode Hollandmu adalah tiga tipe dengan skor tertinggi.
-      </p>
+      <p>Setiap orang memiliki kombinasi unik dari enam tipe ini. Kode Hollandmu adalah tiga tipe dengan skor tertinggi.</p>
       <div class="types-grid">
-        <div class="type-card R">
-          <div class="type-letter">R</div>
-          <div class="type-name">Realistic</div>
-          <div class="type-desc">
-            Suka bekerja dengan alat, mesin, dan aktivitas fisik.
-            Praktis dan berorientasi teknis.
+        <div class="type-card R"><div class="type-letter">R</div><div class="type-name">Realistic</div><div class="type-desc">Suka bekerja dengan alat, mesin, dan aktivitas fisik. Praktis dan berorientasi teknis.</div></div>
+        <div class="type-card I"><div class="type-letter">I</div><div class="type-name">Investigative</div><div class="type-desc">Suka mengamati, meneliti, dan memecahkan masalah ilmiah. Analitis dan ingin tahu.</div></div>
+        <div class="type-card A"><div class="type-letter">A</div><div class="type-name">Artistic</div><div class="type-desc">Suka berkreasi dan mengekspresikan diri. Imajinatif dan berorientasi pada ide orisinal.</div></div>
+        <div class="type-card S"><div class="type-letter">S</div><div class="type-name">Social</div><div class="type-desc">Suka membantu, mendidik, dan bekerja dengan orang. Empatik dan berorientasi sosial.</div></div>
+        <div class="type-card E"><div class="type-letter">E</div><div class="type-name">Enterprising</div><div class="type-desc">Suka memimpin, menjual, dan mempengaruhi. Ambisius dan berorientasi pada tujuan.</div></div>
+        <div class="type-card C"><div class="type-letter">C</div><div class="type-name">Conventional</div><div class="type-desc">Suka keteraturan, data, dan prosedur yang jelas. Teliti dan berorientasi detail.</div></div>
+      </div>
+    </div>
+    <div class="cta-section">
+      <h2>Siap Mengenal Dirimu Lebih Dalam?</h2>
+      <p>Tes ini terdiri dari 60 pernyataan dan membutuhkan sekitar 10–15 menit untuk diselesaikan.</p>
+      <button class="btn-primary" onclick="goToForm()">Mulai Tes →</button>
+    </div>
+    <footer>© 2025 UPA Bimbingan Konseling – Universitas Mulawarman. Semua hak dilindungi.</footer>
+  </div>
+
+  <!-- FORM DATA DIRI -->
+  <div id="screen-form" class="screen">
+    <div class="form-screen-wrapper">
+
+      <div class="form-panel-left">
+        <div class="form-panel-inner">
+          <div class="form-step-badge">Langkah 1 dari 2</div>
+          <h2 class="form-panel-title">Sebelum Mulai,<br/>Kenalkan Dirimu</h2>
+          <p class="form-panel-sub">Data diri kamu akan ditampilkan pada laporan hasil tes dan membantu konselor BK dalam membaca profilmu.</p>
+          <div class="form-riasec-letters">
+            <span style="color:#e8534c;">R</span>
+            <span style="color:#4c8eb5;">I</span>
+            <span style="color:#c26db5;">A</span>
+            <span style="color:#4cad7a;">S</span>
+            <span style="color:#e8a84c;">E</span>
+            <span style="color:#7a6bb5;">C</span>
           </div>
+          <p class="form-panel-note">Tidak ada jawaban benar atau salah.<br/>Jawab sesuai dengan perasaanmu.</p>
         </div>
-        <div class="type-card I">
-          <div class="type-letter">I</div>
-          <div class="type-name">Investigative</div>
-          <div class="type-desc">
-            Suka mengamati, meneliti, dan memecahkan masalah ilmiah.
-            Analitis dan ingin tahu.
+      </div>
+
+      <div class="form-panel-right">
+        <div class="form-card">
+          <div class="form-card-header">
+            <div class="form-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <h2 class="form-card-title">Data Diri Peserta</h2>
+              <p class="form-card-sub">Mohon isi dengan lengkap dan benar</p>
+            </div>
           </div>
-        </div>
-        <div class="type-card A">
-          <div class="type-letter">A</div>
-          <div class="type-name">Artistic</div>
-          <div class="type-desc">
-            Suka berkreasi dan mengekspresikan diri.
-            Imajinatif dan berorientasi pada ide orisinal.
+
+          <div class="form-divider"></div>
+
+          <div class="form-group">
+            <label for="user-nama">
+              <span class="form-label-text">Nama Lengkap</span>
+              <span class="form-label-required">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <svg class="form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <input type="text" id="user-nama" placeholder="Masukkan nama lengkap kamu" autocomplete="name" />
+            </div>
           </div>
-        </div>
-        <div class="type-card S">
-          <div class="type-letter">S</div>
-          <div class="type-name">Social</div>
-          <div class="type-desc">
-            Suka membantu, mendidik, dan bekerja dengan orang.
-            Empatik dan berorientasi sosial.
+
+          <div class="form-group">
+            <label for="user-prodi">
+              <span class="form-label-text">Program Studi</span>
+              <span class="form-label-required">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <svg class="form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <input type="text" id="user-prodi" placeholder="Contoh: Sistem Informasi" />
+            </div>
           </div>
-        </div>
-        <div class="type-card E">
-          <div class="type-letter">E</div>
-          <div class="type-name">Enterprising</div>
-          <div class="type-desc">
-            Suka memimpin, menjual, dan mempengaruhi.
-            Ambisius dan berorientasi pada tujuan.
+
+          <div class="form-group">
+            <label for="user-angkatan">
+              <span class="form-label-text">Angkatan / NIM</span>
+              <span class="form-label-required">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <svg class="form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <input type="text" id="user-angkatan" placeholder="Contoh: 2024 / 2409xxxx" />
+            </div>
           </div>
-        </div>
-        <div class="type-card C">
-          <div class="type-letter">C</div>
-          <div class="type-name">Conventional</div>
-          <div class="type-desc">
-            Suka keteraturan, data, dan prosedur yang jelas.
-            Teliti dan berorientasi detail.
+
+          <div class="form-group">
+            <label for="user-telp">
+              <span class="form-label-text">Nomor Telepon</span>
+              <span class="form-label-required">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <svg class="form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <input type="tel" id="user-telp" placeholder="Contoh: 08xxxxxxxxxx" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-info-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Data hanya digunakan untuk keperluan laporan hasil tes BK.
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-form-back" onclick="goHome()">← Batal</button>
+            <button class="btn-form-next" onclick="validateForm()">
+              Mulai Tes
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- CTA -->
-    <div class="cta-section">
-      <h2>Siap Mengenal Dirimu Lebih Dalam?</h2>
-      <p>
-        Tes ini terdiri dari 60 pernyataan dan membutuhkan sekitar
-        10–15 menit untuk diselesaikan.
-      </p>
-      <button class="btn-primary" onclick="startTest()">Mulai Tes →</button>
     </div>
-
-    < >
-      © 2025 UPA Bimbingan Konseling – Universitas Mulawarman.
-      Semua hak dilindungi.
-    </footer>
   </div>
 
-
-  <!-- ============================================================
-       SCREEN: TEST
-       ============================================================ -->
+  <!-- TEST -->
   <div id="screen-test" class="screen">
     <div class="test-container">
-
-      <!-- Header & Progress -->
       <div class="test-header">
         <div class="progress-info">
           <span class="progress-label" id="section-label">Bagian A – Aktivitas Teknis</span>
@@ -146,28 +166,19 @@
           <span style="font-size: 12px; color: var(--muted);" id="answered-count"></span>
         </div>
       </div>
-
-      <!-- Dynamic section tag & questions (injected by JS) -->
       <div id="section-tag-container"></div>
       <div id="questions-container"></div>
-
-      <!-- Navigation -->
       <div class="test-nav">
         <button class="btn-nav btn-back" id="btn-back" onclick="prevSection()">← Kembali</button>
         <button class="btn-nav btn-next" id="btn-next" onclick="nextSection()">Lanjut →</button>
       </div>
-
     </div>
   </div>
 
-
-  <!-- ============================================================
-       SCREEN: RESULT
-       ============================================================ -->
+  <!-- RESULT -->
   <div id="screen-result" class="screen">
     <div class="result-container">
-
-      <!-- Result hero banner -->
+      <div id="user-info-display" class="user-info-print"></div>
       <div class="result-hero">
         <div class="result-hero-content">
           <div class="result-code-label">Kode Holland Kamu</div>
@@ -176,30 +187,16 @@
           <div class="result-sub">Berdasarkan 60 pernyataan minat karier</div>
         </div>
       </div>
-
-      <!-- Score cards (injected by JS) -->
       <div class="score-grid" id="score-grid"></div>
-
-      <!-- Personality description cards (injected by JS) -->
       <div class="result-desc-cards" id="result-desc-cards"></div>
-
-      <!-- Actions -->
       <div class="result-actions">
-        <button class="btn-print"   onclick="window.print()">Cetak Hasil</button>
-        <button class="btn-primary" onclick="scrollToTypes()">Beranda</button>
+        <button class="btn-print" onclick="window.print()">Cetak Hasil</button>
+        <button class="btn-primary" onclick="goHome()">Beranda</button>
       </div>
-
     </div>
-
-    <footer>
-      © 2025 UPA Bimbingan Konseling – Universitas Mulawarman. Project by Hi-5.
-      All rights reserved.
-    </footer>
+    <footer>© 2025 UPA Bimbingan Konseling – Universitas Mulawarman. Project by Hi-5. All rights reserved.</footer>
   </div>
 
-
-  <!-- JavaScript -->
   <script src="js/app.js"></script>
-
 </body>
 </html>
